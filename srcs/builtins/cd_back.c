@@ -47,10 +47,11 @@ int	switch_directories(char *old_pwd)
 	{
 		exit_code = check_and_change_dir(temp_pwd + 4);
 		printf("%s\n", temp_pwd + 4);
+		free(temp_pwd);
 		return (exit_code);
 	}
 	else
-		return (0);
+		return (free(temp_pwd), 0);
 }
 
 int	check_and_change_dir(char *dir)

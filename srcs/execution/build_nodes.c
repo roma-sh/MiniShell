@@ -28,6 +28,19 @@ void	add_inputnode_tolist(t_input **data, t_input *new_line_data)
 	}
 }
 
+t_input	*fill_node(int k, char *whole_line, int i, int j)
+{
+	t_input	*tmp;
+
+	tmp = (t_input *)ft_malloc(sizeof(t_input));
+	tmp->part_line = (char *)ft_malloc(j + 1);
+	tmp->part_line = ft_memcpy(tmp->part_line, &whole_line[i], j);
+	tmp->next = NULL;
+	tmp->data_node = NULL;
+	tmp->i = k;
+	return (tmp);
+}
+
 int	create_input_node(char *whole_line, int i, t_input **new_input_node, int k)
 {
 	t_input	*tmp;
@@ -35,7 +48,6 @@ int	create_input_node(char *whole_line, int i, t_input **new_input_node, int k)
 	char	*res;
 
 	j = 0;
-	tmp = (t_input *)ft_malloc(sizeof(t_input));
 	while (whole_line[i + j] != '\0')
 	{
 		if (whole_line[i + j] == '|')
@@ -44,16 +56,15 @@ int	create_input_node(char *whole_line, int i, t_input **new_input_node, int k)
 			if (check_qoute_syntax(res) == -1)
 				;
 			else
+			{
+				free(res);
 				break ;
+			}
 			free(res);
 		}
 		j++;
 	}
-	tmp->part_line = (char *)ft_malloc(j + 1);
-	tmp->part_line = ft_memcpy(tmp->part_line, &whole_line[i], j);
-	tmp->next = NULL;
-	tmp->data_node = NULL;
-	tmp->i = k;
+	tmp = fill_node(k, whole_line, i, j);
 	return (add_inputnode_tolist(new_input_node, tmp), i + j);
 }
 

@@ -113,7 +113,6 @@ void	check_for_new_pwd(t_env **mini_env, t_env **new_export,
 	}
 	else if (exit_code == 0 && temp_pwd[0] == '/')
 	{
-		new_pwd = getcwd(NULL, 0);
 		new_pwd = ft_strjoin("PWD=", temp_pwd);
 		change_other_envs(mini_env, new_export, new_pwd);
 		free(new_pwd);

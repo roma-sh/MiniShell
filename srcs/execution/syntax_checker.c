@@ -79,6 +79,24 @@ int	check_spaces_syntax(char *str)
 	return (-1);
 }
 
+int	check_invalid(char *str, t_env **mini_env)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '\\' || str[i] == ';')
+		{
+			printf("The program can not interpret '\' or ';'\n");
+			change_status(mini_env, 127);
+			return (-1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	check_syntax(char *str, t_env **mini_env)
 {
 	int	checker;
@@ -101,5 +119,7 @@ int	check_syntax(char *str, t_env **mini_env)
 		change_status(mini_env, 0);
 		checker = -1;
 	}
+	if (check_invalid(str, mini_env) == -1)
+		return (-1);
 	return (checker);
 }
