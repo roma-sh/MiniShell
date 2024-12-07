@@ -1,5 +1,7 @@
 # Minishell - As Beautiful as a Shell
 
+![Minishell](link)
+
 Minishell is a simple command-line interpreter project inspired by bash. It provides an opportunity to understand how shells work by implementing fundamental features such as command parsing, execution, piping, redirections, and signal handling. Through this project, you’ll gain a deeper understanding of processes, file descriptors, and memory management in C.
 
 ## Project Purpose
