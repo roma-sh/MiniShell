@@ -123,3 +123,13 @@ This project challenges you to replicate essential functionalities of a shell, e
 Run the following command to compile the project:
 ```bash
 make
+```
+
+## Acknowledgements
+This project was developed by me together with my friend, [Eleni](https://github.com/EleniPerpe).
+She made major contributions by:
+- Parsing the input data and preparing it for execution
+- Handling errors and edge cases
+- Implementing the built-in commands
+
+Her work was essential to the success of this project!
